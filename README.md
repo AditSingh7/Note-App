@@ -16,27 +16,22 @@ A simple and modern React Native Notes App built using React Native and TypeScri
 
 ---
 
+```md id="b3g3q4"
 ## 🎥 Demo Video
 
-[![Watch the Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://youtu.be/YOUR_VIDEO_ID)
-
-> Replace `YOUR_VIDEO_ID` with your actual YouTube video ID.
-
-Or if you want to use a local video file:
-
-```md
 [Download Demo Video](./assets/images/DemoOfNoteApp.mp4)
-```
 
 ---
 
 ## 📸 Screenshots
 
-Add your screenshots inside an `assets` folder and use:
-
-```md
 ![Home Screen](./assets/images/ScreenShot1.png)
-![Notes Screen](./assets/images/ScreenShot2.png)
+
+![Notes Screen](./assets/images/Screenshot2.png)
+
+![Notes Screen](./assets/images/Screenshot3.png)
+
+![Notes Screen](./assets/images/Screenshot4.png)
 ```
 
 ---
