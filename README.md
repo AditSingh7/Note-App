@@ -16,22 +16,21 @@ A simple and modern React Native Notes App built using React Native and TypeScri
 
 ---
 
-```md id="b3g3q4"
 ## 🎥 Demo Video
 
-[Download Demo Video](./assets/images/DemoOfNoteApp.mp4)
+![App Demo](./assets/images/DemoOfNoteApp.mp4)
 
 ---
 
 ## 📸 Screenshots
 
-![Home Screen](./assets/images/ScreenShot1.png)
+<p align="center">
+  <img src="./assets/images/ScreenShot3.png" width="250" alt="Light Mode - Notes List" />
+  <img src="./assets/images/ScreenShot4.png" width="250" alt="Light Mode - Notes List" />
+  <img src="./assets/images/ScreenShot1.png" width="250" alt="Dark Mode - Notes List" />
+  <img src="./assets/images/Screenshot2.png" width="250" alt="Dark Mode - Editor" />
+</p>
 
-![Notes Screen](./assets/images/Screenshot2.png)
-
-![Notes Screen](./assets/images/Screenshot3.png)
-
-![Notes Screen](./assets/images/Screenshot4.png)
 ```
 
 ---
