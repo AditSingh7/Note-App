@@ -1,56 +1,171 @@
-# Welcome to your Expo app 👋
+# 📝 Note App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple and modern React Native Notes App built using React Native and TypeScript. This app allows users to create, manage, and organize notes with a clean and responsive UI.
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Features
 
-   ```bash
-   npm install
-   ```
+- ✨ Clean and minimal UI
+- 📝 Create and manage notes
+- 📋 Notes list with preview text
+- 📅 Date display for notes
+- ⚡ Fast and responsive performance
+- 📱 Built with React Native + TypeScript
+- 🎨 Modern mobile app design
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🎥 Demo Video
 
-In the output, you'll find options to open the app in a
+[![Watch the Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://youtu.be/YOUR_VIDEO_ID)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+> Replace `YOUR_VIDEO_ID` with your actual YouTube video ID.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Or if you want to use a local video file:
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```md
+[Download Demo Video](./assets/images/DemoOfNoteApp.mp4)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 📸 Screenshots
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Add your screenshots inside an `assets` folder and use:
 
-## Learn more
+```md
+![Home Screen](./assets/images/ScreenShot1.png)
+![Notes Screen](./assets/images/ScreenShot2.png)
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🛠️ Tech Stack
 
-## Join the community
+- React Native
+- TypeScript
+- Expo / React Native CLI
+- FlatList
+- Pressable Components
+- StyleSheet API
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📂 Project Structure
+
+```bash
+Note-App/
+│
+├── assets/
+├── components/
+├── screens/
+├── App.tsx
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/AditSingh7/Note-App.git
+```
+
+### 2️⃣ Navigate to Project Folder
+
+```bash
+cd Note-App
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Run the App
+
+### Start Metro Server
+
+```bash
+npm start
+```
+
+### Run on Android
+
+```bash
+npm run android
+```
+
+### Run on iOS
+
+```bash
+npm run ios
+```
+
+---
+
+## 📦 Dependencies
+
+Example dependencies used in the project:
+
+```json
+{
+  "react": "latest",
+  "react-native": "latest",
+  "typescript": "latest"
+}
+```
+
+---
+
+## 🎨 UI Preview
+
+You can also add a GIF preview:
+
+```md
+![App Demo](./assets/demo.gif)
+```
+
+---
+
+## 📌 Future Improvements
+
+- 🔍 Search notes
+- 🗂️ Categories / Tags
+- ☁️ Cloud Sync
+- 🌙 Dark Mode
+- ✏️ Edit existing notes
+- 🗑️ Delete confirmation modal
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the project
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+Made with ❤️ by Adit Singh
+
+GitHub: [https://github.com/AditSingh7](https://github.com/AditSingh7)
