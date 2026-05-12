@@ -1,56 +1,166 @@
-# Welcome to your Expo app 👋
+# 📝 Note App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern Notes Application built using React Native, Expo Router, and TypeScript.
 
-## Get started
+This app provides a clean and responsive UI for managing notes with support for dark mode, searching, responsive layouts, and interactive note editing.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+# ✨ Features
 
-2. Start the app
+## 📋 Notes Listing Screen
 
-   ```bash
-   npx expo start
-   ```
+* Displays notes using `FlatList`
+* Modern card-based UI
+* Interactive press animations
+* Empty search state handling
 
-In the output, you'll find options to open the app in a
+## 🔍 Search Functionality
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* Real-time note filtering
+* Search by note title or content preview
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🌙 Dark / Light Mode
 
-## Get a fresh project
+* Automatic system theme detection
+* Manual theme toggle support
+* Dynamic UI color adaptation
 
-When you're ready, run:
+## 📝 Note Editor Screen
 
-```bash
-npm run reset-project
+* Create and edit notes
+* Responsive input fields
+* Title character counter
+* Focus state styling
+* Keyboard avoiding behavior
+
+## ⚠️ Validation & Navigation
+
+* Save validation for empty fields
+* Unsaved changes warning dialog
+* Back navigation using Expo Router
+
+## 📱 Responsive Design
+
+* Mobile and tablet layout support
+* Dynamic spacing using screen dimensions
+
+---
+
+# 🛠️ Tech Stack
+
+* React Native
+* Expo
+* Expo Router
+* TypeScript
+* React Hooks
+* StyleSheet API
+
+---
+
+# 📂 Project Structure
+
+```bash id="0ec3ur"
+Note-App/
+│
+├── app/
+│   ├── index.tsx
+│   ├── editor.tsx
+│   └── _layout.tsx
+│
+├── assets/
+│   └── images/
+│
+├── components/
+├── package.json
+└── README.md
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+# ⚙️ Installation
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Clone the repository:
 
-## Learn more
+```bash id="ib43x4"
+git clone https://github.com/AditSingh7/Note-App.git
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Move into the project folder:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash id="jg2uxs"
+cd Note-App
+```
 
-## Join the community
+Install dependencies:
 
-Join our community of developers creating universal apps.
+```bash id="q3m8ph"
+npm install
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Start the Expo development server:
+
+```bash id="u78l8u"
+npx expo start
+```
+
+---
+
+# 📱 Running the App
+
+Run the application using:
+
+* Android Emulator
+* iOS Simulator
+* Expo Go
+
+---
+
+# 🌙 Theme Support
+
+The app supports:
+
+* Automatic system theme detection using:
+
+```tsx id="mpqm6v"
+useColorScheme()
+```
+
+* Manual dark/light mode toggling
+
+---
+
+# 📸 Screens
+
+* Home Screen
+* Notes List
+* Search UI
+* Note Editor
+* Dark Mode Interface
+
+---
+
+# 🚀 Future Improvements
+
+* Local database storage
+* Cloud sync
+* User authentication
+* Categories & tags
+* Rich text formatting
+* Pin notes feature
+* Delete & edit notes
+* Animations and transitions
+
+---
+
+# 👨‍💻 Author
+
+Adit Singh
+
+GitHub: https://github.com/AditSingh7
+
+---
+
+# 📄 License
+
+This project is developed for learning and educational purposes.
