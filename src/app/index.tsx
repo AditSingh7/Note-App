@@ -1,98 +1,292 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from "expo-router";
+import React, { useState } from "react";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  useColorScheme,
+  View,
+} from "react-native";
+import { useTheme } from "../context/ThemeContext";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+const HomeScreen = () => {
+  const systemTheme = useColorScheme();
+  const { themeOverride, setThemeOverride, notes } = useTheme();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [focusedCardId, setFocusedCardId] = useState<string | null>(null);
+  const theme = themeOverride || systemTheme;
+  const isDark = theme === "dark";
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+  const toggleTheme = () => {
+    setThemeOverride(isDark ? "light" : "dark");
+  };
+
+  const filteredNotes = notes.filter(
+    (note) =>
+      note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      note.preview.toLowerCase().includes(searchQuery.toLowerCase()),
   );
-}
 
-export default function HomeScreen() {
   return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: isDark ? "#0F172A" : "#FFFFFF" },
+      ]}
+    >
+      <StatusBar
+        barStyle={isDark ? "light-content" : "dark-content"}
+        backgroundColor={isDark ? "#0F172A" : "#FFFFFF"}
+      />
+      <View style={styles.header}>
+        <Pressable style={styles.themeToggler} onPress={toggleTheme}>
+          <Image
+            source={require("../../assets/images/dark-mode.png")}
+            style={styles.toggleImage}
           />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
+        </Pressable>
+        <Text
+          style={[styles.heading, { color: isDark ? "#FFFFFF" : "#000000" }]}
+        >
+          Your tasks
+        </Text>
+        <View style={styles.headerRightGroup}>
+          <Pressable
+            style={[
+              styles.addButton,
+              { backgroundColor: isDark ? "#1E293B" : "#F1F5F9" },
+            ]}
+            onPress={() => router.push("/editor")}
+          >
+            <Text
+              style={[
+                styles.addButtonText,
+                { color: isDark ? "#3B82F6" : "#3B82F6" },
+              ]}
+            >
+              +
+            </Text>
+          </Pressable>
+          <Image
+            source={require("../../assets/images/user.png")}
+            style={styles.profileImage}
           />
-        </ThemedView>
+        </View>
+      </View>
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      <View
+        style={[
+          styles.searchContainer,
+          { backgroundColor: isDark ? "#1E293B" : "#F1F5F9" },
+        ]}
+      >
+        <TextInput
+          style={[
+            styles.searchInput,
+            {
+              backgroundColor: isDark ? "#0F172A" : "#FFFFFF",
+              color: isDark ? "#FFFFFF" : "#000000",
+              borderColor: isDark ? "#334155" : "#E2E8F0",
+            },
+          ]}
+          placeholder="Search notes..."
+          placeholderTextColor={isDark ? "#94A3B8" : "#CBD5E1"}
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
+      </View>
+
+      <FlatList
+        data={filteredNotes}
+        keyExtractor={(item) => item.id}
+        ListEmptyComponent={
+          searchQuery ? (
+            <View style={styles.emptyContainer}>
+              <Text
+                style={[
+                  styles.emptyText,
+                  { color: isDark ? "#94A3B8" : "#64748B" },
+                ]}
+              >
+                No notes found
+              </Text>
+            </View>
+          ) : null
+        }
+        renderItem={({ item }) => (
+          <Pressable
+            style={[
+              styles.card,
+              {
+                backgroundColor: isDark ? "#1E293B" : "#E2E8F0",
+              },
+              focusedCardId === item.id && styles.cardFocused,
+            ]}
+            onPress={() =>
+              router.push({
+                pathname: "/editor",
+                params: {
+                  id: item.id,
+                  title: item.title,
+                  content: item.preview,
+                  date: item.date,
+                },
+              })
+            }
+            onPressIn={() => setFocusedCardId(item.id)}
+            onPressOut={() => setFocusedCardId(null)}
+          >
+            <Text
+              style={[styles.title, { color: isDark ? "#FFFFFF" : "#000000" }]}
+            >
+              {item.title}
+            </Text>
+
+            <Text
+              style={[
+                styles.preview,
+                { color: isDark ? "#CBD5E1" : "#475569" },
+              ]}
+            >
+              {item.preview}
+            </Text>
+
+            <Text
+              style={[styles.date, { color: isDark ? "#94A3B8" : "#64748B" }]}
+            >
+              {item.date}
+            </Text>
+          </Pressable>
+        )}
+      />
+    </View>
   );
-}
+};
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    padding: 20,
+    paddingTop: 40,
   },
-  safeArea: {
+
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+
+  themeToggler: {
+    padding: 8,
+  },
+
+  toggleImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+
+  heading: {
+    fontSize: 28,
+    fontWeight: "700",
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    textAlign: "center",
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
+
+  profileImage: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+  },
+
+  headerRightGroup: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+
+  addButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+
+  addButtonText: {
+    fontSize: 28,
+    fontWeight: "600",
+  },
+
+  searchContainer: {
+    paddingHorizontal: 0,
+    paddingVertical: 16,
+    marginBottom: 12,
+    borderRadius: 12,
+  },
+
+  searchInput: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 16,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+
+  card: {
+    padding: 20,
+    borderRadius: 20,
+    marginBottom: 16,
+    gap: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+
+  cardFocused: {
+    shadowOpacity: 0.2,
+    elevation: 6,
+    transform: [{ scale: 1.02 }],
+  },
+
+  emptyContainer: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 40,
   },
+
+  emptyText: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+
   title: {
-    textAlign: 'center',
+    fontSize: 22,
+    fontWeight: "700",
   },
-  code: {
-    textTransform: 'uppercase',
+
+  preview: {
+    fontSize: 16,
+    lineHeight: 24,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+
+  date: {
+    fontSize: 13,
+    opacity: 0.6,
   },
 });
