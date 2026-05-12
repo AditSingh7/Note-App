@@ -26,8 +26,11 @@ A simple and modern React Native Notes App built using React Native and TypeScri
 
 <p align="center">
   <img src="./assets/images/ScreenShot3.png" width="250" alt="Light Mode - Notes List" />
+
   <img src="./assets/images/ScreenShot4.png" width="250" alt="Light Mode - Notes List" />
+
   <img src="./assets/images/ScreenShot1.png" width="250" alt="Dark Mode - Notes List" />
+  
   <img src="./assets/images/Screenshot2.png" width="250" alt="Dark Mode - Editor" />
 </p>
 
